@@ -1,4 +1,4 @@
 
 export enum ElementState {
-    EMPTY, FILLED
+    EMPTY = "EMPTY", FILLED = "FILLED"
 }

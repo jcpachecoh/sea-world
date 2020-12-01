@@ -25,5 +25,5 @@ describe('SeaWorldGrid should behave as expected', () => {
         );
         const elements = container.getElementsByTagName('div').length;
         expect(elements).toBe(1);
-      });
+    });
 })
