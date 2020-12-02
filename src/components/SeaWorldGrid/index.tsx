@@ -32,6 +32,7 @@ interface SeaWorldGridProps {
 
 const SeaWorldGrid = ({ handleStateChange }: SeaWorldGridProps) => {
 
+
     return <SeaWorldContext.Consumer>
         {
             ({ seaWorldElements, seaWorldSpace }) => {
