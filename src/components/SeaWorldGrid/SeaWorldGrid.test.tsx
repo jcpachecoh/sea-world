@@ -10,7 +10,8 @@ describe('SeaWorldGrid should behave as expected', () => {
     const seaWorldContext: SeaWorldContextProps = {
         isConfigurationModalVisible: true,
         seaWorldElements: null,
-        seaWorldSpace: {width: 0, height: 0, elementSize: 20}
+        seaWorldSpace: { width: 0, height: 0, elementSize: 20 },
+        matrix: null
     }
 
     beforeAll(() => {
@@ -33,11 +34,19 @@ describe('SeaWorldGrid should behave as expected', () => {
             ...seaWorldContext,
             seaWorldElements: [{
                 id: 0,
-                state: ElementState.EMPTY
+                state: ElementState.EMPTY,
+                position: {
+                    x: 0,
+                    y: 0
+                }
             },
             {
                 id: 1,
-                state: ElementState.FILLED
+                state: ElementState.FILLED,
+                position: {
+                    x: 0,
+                    y: 0
+                }
             }
         ]
         }

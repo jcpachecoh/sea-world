@@ -4,4 +4,5 @@ export type SeaWorldContextProps = {
     isConfigurationModalVisible: boolean;
     seaWorldSpace: ISeaWordlSpaceProps;
     seaWorldElements: ISeaWorldElementProps[] | null;
+    matrix: number[][] | null
 }

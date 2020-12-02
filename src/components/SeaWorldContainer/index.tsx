@@ -12,7 +12,8 @@ const SeaWorldContainer = () => {
   const [seaWorldData, setSeaWorldData] = useState<SeaWorldContextProps>({
     isConfigurationModalVisible: true,
     seaWorldSpace: { width: 0, height: 0, elementSize: 40 },
-    seaWorldElements: null
+    seaWorldElements: null,
+    matrix: null
   })
     const handleChangeGrid = (value: number, property: string) => {
       setSeaWorldData({
@@ -34,31 +35,46 @@ const SeaWorldContainer = () => {
   const handleSetSeaWordElements = () => {
     const { seaWorldSpace } = seaWorldData;
     const { width, height } = seaWorldSpace;
-    const seaWorldNumberOfElements: number = width * height;
-
     const newSeaWorldElements: ISeaWorldElementProps[] = [];
-
-    for (let index = 0; index < seaWorldNumberOfElements; index++) {
-      newSeaWorldElements.push({
-        id: index, state: ElementState.EMPTY
-      });
+    const matrixData: number[][] | null = Array(width).fill(null).map(() => Array(height));
+    let cont = 0;
+    for (let i = 0; i < width; i++) {
+      for (let j = 0; j < height; j++) {
+        matrixData[i][j] = 0;
+        newSeaWorldElements.push({
+          id: cont,
+          state: ElementState.EMPTY,
+          position: {
+            x: i,
+            y: j
+          }
+        });
+        cont++;
+      }
     }
     setSeaWorldData({
       ...seaWorldData,
       seaWorldElements: newSeaWorldElements,
-      isConfigurationModalVisible: false
+      isConfigurationModalVisible: false,
+      matrix: matrixData
     })
   }
 
   const handleStateChange = (id: number) => {
     let tempObj: ISeaWorldElementProps[] | null = seaWorldData && seaWorldData.seaWorldElements;
+    let tempMatrix: number[][] | null = seaWorldData && seaWorldData.matrix;
+    
     if (tempObj) {
       tempObj[id] = {...tempObj[id], state: tempObj[id].state === ElementState.EMPTY ? ElementState.FILLED : ElementState.EMPTY}
+    }
+    if (tempMatrix && tempObj) {
+      tempMatrix[tempObj[id].position.x][tempObj[id].position.y] = 1
     }
     setSeaWorldData({
       ...seaWorldData,
       seaWorldElements: tempObj,
-      isConfigurationModalVisible: false
+      isConfigurationModalVisible: false,
+      matrix: tempMatrix
     })
   }
 

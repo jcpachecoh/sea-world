@@ -10,7 +10,8 @@ describe('Header tests', () => {
   const seaWorldContext: SeaWorldContextProps = {
     isConfigurationModalVisible: true,
     seaWorldElements: null,
-    seaWorldSpace: {width: 0, height: 0, elementSize: 20}
+    seaWorldSpace: { width: 0, height: 0, elementSize: 20 },
+    matrix: null
   }
   beforeEach(() => {
   
@@ -49,11 +50,19 @@ describe('Header tests', () => {
       seaWorldElements: [
         {
           id: 0,
-          state: ElementState.EMPTY
+          state: ElementState.EMPTY,
+          position: {
+            x: 0,
+            y: 0
+        }
         },
         {
           id: 1,
-          state: ElementState.FILLED
+          state: ElementState.FILLED,
+          position: {
+            x: 0,
+            y: 1
+        }
         }
       ]
     };
@@ -62,7 +71,7 @@ describe('Header tests', () => {
       <Header title={"Sea world"} handleConfigurationVisible={mockFn} />
       </SeaWorldContext.Provider>
     );
-    const badge = screen.getAllByTestId('badge-island-number')[1].innerHTML;
+    const badge = screen.getAllByTestId('badge-filled-number')[1].innerHTML;
     expect(badge).toBe("1");
   });
   test('should have island container and show numbers of islands', () => {
@@ -71,20 +80,76 @@ describe('Header tests', () => {
       seaWorldElements: [
         {
           id: 0,
-          state: ElementState.EMPTY
+          state: ElementState.EMPTY,
+          position: {
+            x: 0,
+            y: 0
+        }
         },
         {
           id: 1,
-          state: ElementState.FILLED
+          state: ElementState.FILLED,
+          position: {
+            x: 0,
+            y: 1
+        },
+        },
+        {
+          id: 2,
+          state: ElementState.EMPTY,
+          position: {
+            x: 0,
+            y: 0
+        }
+        },
+        {
+          id: 3,
+          state: ElementState.FILLED,
+          position: {
+            x: 0,
+            y: 1
+        },
+        },
+        {
+          id: 4,
+          state: ElementState.EMPTY,
+          position: {
+            x: 0,
+            y: 0
+        }
+        },
+        {
+          id: 5,
+          state: ElementState.FILLED,
+          position: {
+            x: 0,
+            y: 1
+        },
+        },
+        {
+          id: 6,
+          state: ElementState.EMPTY,
+          position: {
+            x: 0,
+            y: 0
+        }
+        },
+        {
+          id: 7,
+          state: ElementState.FILLED,
+          position: {
+            x: 0,
+            y: 1
+        },
         }
       ]
     };
     render(
       <SeaWorldContext.Provider value={newProps}>
-      <Header title={"Sea world"} handleConfigurationVisible={mockFn} />
+        <Header title={"Sea world"} handleConfigurationVisible={mockFn} />
       </SeaWorldContext.Provider>
     );
     const badge = screen.getAllByTestId('badge-island-number')[1].innerHTML;
-    expect(badge).toBe("1");
+    expect(badge).toBe('0');
   });
 });
