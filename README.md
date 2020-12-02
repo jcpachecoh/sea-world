@@ -1,4 +1,4 @@
-# Sea World Projetc
+# Sea World Project
 
 This is project that simulates a sea  where the user can add islands filling the sea clicking in the sea elements
 
@@ -12,8 +12,6 @@ This is project that simulates a sea  where the user can add islands filling the
 
 
 ### `Run Project `
-
-* Run the app `yarn start`
 
 * Runs the app in the development mode. with `yarn start`\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
