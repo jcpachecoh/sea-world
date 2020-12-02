@@ -6,8 +6,11 @@ export const theme = {
   colors: {
     powderWhite: "#FFFDF9",
     persianGreen: "#06B49A",
-    lightBlue: "#AFDBD2",
-    onyx: "#36313D"
+    seaBlue: "#00A4CCFF",
+    islandGreen: "#2BAE66FF",
+    islandBrown: "#A07855FF",
+    onyx: "#36313D",
+    black: "#000000"
   },
   fonts: ["sans-serif", "Roboto"],
   fontSizes: {

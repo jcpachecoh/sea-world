@@ -11,7 +11,7 @@ describe('ConfigurationModal should behave as expected', () => {
     const seaWorldContext: SeaWorldContextProps = {
         isConfigurationModalVisible: true,
         seaWorldElements: null,
-        seaWorldSpace: {width: 0, height: 0}
+        seaWorldSpace: {width: 0, height: 0, elementSize: 20}
     }
 
     beforeEach(() => {

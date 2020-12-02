@@ -1,13 +1,18 @@
-import React, { useRef } from 'react'
-import { IElementPositionProps } from '../../ts/interfaces/app_interfaces';
+import React from 'react';
 import styled from 'styled-components'
 import { ElementState } from '../../ts/enums/app_enums';
+import { theme } from '../../theme';
 
-const StyledDiv = styled.div`
-    background-color: blue;
-    width: 40px;
-    height: 40px;
-    border: 1px solid black;
+interface DivComponentProps {
+    readonly state: ElementState;
+    readonly elementSize: number | undefined;
+};
+
+const StyledDiv = styled.div<DivComponentProps>`
+    background-color: ${props => props.state === ElementState.EMPTY ? theme.colors.seaBlue : theme.colors.islandBrown};
+    width: ${props => props.elementSize}px;
+    height: ${props => props.elementSize}px;
+    border: 1px solid ${theme.colors.onyx};
     &:hover {
         opacity: 0.8;
     }
@@ -17,15 +22,18 @@ interface ISeaWorldElementComponentProps {
     handleStateChange: (id: number) => void;
     id: number;
     state: ElementState;
-    position: IElementPositionProps;
+    elementSize: number | undefined;
 }
 
-const SeaWorldElement = ({ id, state, position, handleStateChange}: ISeaWorldElementComponentProps) =>{
-    const divElement= useRef(null);
-
+const SeaWorldElement = ({ id, state, elementSize, handleStateChange}: ISeaWorldElementComponentProps) =>{
 
     return (
-        <StyledDiv onClick={() => handleStateChange(id)} data-id={id} ref={divElement}/>
+        <StyledDiv
+            onClick={() => handleStateChange(id)}
+            data-testid={'sea-world-element'}
+            state={state}
+            elementSize={elementSize}
+        />
     )
 }
 
